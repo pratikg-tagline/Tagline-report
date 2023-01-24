@@ -1,5 +1,5 @@
-<div class="top-menu" style="border-bottom: 2px solid #da6122">
-  <img class="top-menu-img" src="./../../assets/Images/logo.png" />
+<!-- <div class="top-menu" style="border-bottom: 2px solid #da6122">
+  <img class="top-menu-img" src="./../../assets/Images/logo.png"/>
 </div>
 <div class="row">
   <div class="col-6 text-center text-orange fw-bold fs-5 p-2">
@@ -7,18 +7,14 @@
   </div>
   <div
     class="col-6 text-center text-orange fw-bold fs-5 p-2"
-    style="background-color: #fbeee8"
-  >
-    <a> {{ requestforleave }}</a>
+    style="background-color: #fbeee8">
+    <a routerLink="req"> {{ requestforleave }}</a>
   </div>
   <div
     class="box pt-2"
-    style="margin: auto; width: 24%; border-bottom: 5px solid #da6122"
-  >
+    style="margin: auto; width: 30%; border-bottom: 5px solid #da6122">
     <h2 class="text-center fs-1 py-3 fw-bold">{{ line }}</h2>
-  </div>
-</div>
-
+  </div></div> -->
 <div class="row d-felx p-5">
   <div
     class="col-lg-6 p-4"
@@ -27,7 +23,7 @@
     <form [formGroup]="taglinereport">
       <div class="row d-flex">
         <div class="col-lg-6">
-          <label class="form-label">{{ clientname }}</label>
+          <label class="form-label fs-5">{{ clientname }}</label>
           <input
             type="text"
             formControlName="clientname"
@@ -37,7 +33,7 @@
           />
         </div>
         <div class="col-lg-6">
-          <label class="form-label">{{ projectname }}</label>
+          <label class="form-label fs-5">{{ projectname }}</label>
           <input
             type="text"
             formControlName="projectname"
@@ -49,7 +45,7 @@
       </div>
       <div>
         <div>
-          <label for="completedTask">{{ completed }}</label>
+          <label for="completedTask " class="fs-5">{{ completed }}</label>
           <ng-container
             formArrayName="completedTask"
             *ngFor="let items of completedTask.controls; let i = index"
@@ -70,7 +66,7 @@
                     completedTask.controls.length == 1 ? 'none' : 'inline'
                 }"
               >
-                <i class="remove">-</i>
+                <i class="fa fa-minus remove"></i>
               </button>
               <button
                 type="button"
@@ -81,7 +77,7 @@
                     completedTask.controls.length == 5 ? 'none' : 'inline'
                 }"
               >
-                <i class="add">+</i>
+                <i class="fa fa-plus add"></i>
               </button>
             </div>
             <span class="fs-6 text-danger" *ngIf="items.invalid">{{
@@ -89,8 +85,7 @@
             }}</span>
           </ng-container>
           <br />
-
-          <label for="progresstask">{{ progress }}</label>
+          <label for="progresstask" class="fs-5">{{ progress }}</label>
           <ng-container
             formArrayName="progresstask"
             *ngFor="let items of progresstask.controls; let i = index"
@@ -110,7 +105,7 @@
                   display: progresstask.controls.length == 1 ? 'none' : 'inline'
                 }"
               >
-                <i>-</i>
+                <i class="fa fa-minus remove"></i>
               </button>
               <button
                 type="button"
@@ -120,7 +115,7 @@
                   display: progresstask.controls.length == 5 ? 'none' : 'inline'
                 }"
               >
-                <i class="add">+</i>
+                <i class="fa fa-plus add"></i>
               </button>
             </div>
             <span class="fs-6 text-danger" *ngIf="items.invalid">{{
@@ -128,7 +123,7 @@
             }}</span>
           </ng-container>
           <br />
-          <label for="panddingtask">{{ pandding }}</label>
+          <label for="panddingtask" class="fs-5">{{ pandding }}</label>
           <ng-container
             formArrayName="panddingtask"
             *ngFor="let items of panddingtask.controls; let i = index"
@@ -148,7 +143,7 @@
                   display: panddingtask.controls.length == 1 ? 'none' : 'inline'
                 }"
               >
-                <i>-</i>
+                <i class="fa fa-minus remove"></i>
               </button>
               <button
                 type="button"
@@ -158,15 +153,15 @@
                   display: panddingtask.controls.length == 5 ? 'none' : 'inline'
                 }"
               >
-                <i class="add">+</i>
+                <i class="fa fa-plus add"></i>
               </button>
             </div>
-            <span class="fs-6 text-danger" *ngIf="items.invalid">{{
+            <span class="fs-6 text-danger fs-5" *ngIf="items.invalid">{{
               paerror
             }}</span>
           </ng-container>
           <br />
-          <label for="queriestask">{{ queires }}</label>
+          <label for="queriestask" class="fs-5">{{ queires }}</label>
           <ng-container
             formArrayName="queriestask"
             *ngFor="let items of queriestask.controls; let i = index"
@@ -186,7 +181,7 @@
                   display: queriestask.controls.length == 1 ? 'none' : 'inline'
                 }"
               >
-                <i>-</i>
+                <i class="fa fa-minus remove"></i>
               </button>
               <button
                 type="button"
@@ -196,7 +191,7 @@
                   display: queriestask.controls.length == 5 ? 'none' : 'inline'
                 }"
               >
-                <i class="add">+</i>
+                <i class="fa fa-plus add"></i>
               </button>
             </div>
             <span class="fs-6 text-danger" *ngIf="items.invalid">{{
@@ -204,7 +199,7 @@
             }}</span>
           </ng-container>
           <br />
-          <label for="notestask">{{ notes }}</label>
+          <label for="notestask" class="fs-5">{{ notes }}</label>
           <ng-container
             formArrayName="notestask"
             *ngFor="let items of notestask.controls; let i = index"
@@ -224,7 +219,7 @@
                   display: notestask.controls.length == 1 ? 'none' : 'inline'
                 }"
               >
-                <i>-</i>
+                <i class="fa fa-minus remove"></i>
               </button>
               <button
                 type="button"
@@ -234,7 +229,7 @@
                   display: notestask.controls.length == 5 ? 'none' : 'inline'
                 }"
               >
-                <i class="add">+</i>
+                <i class="fa fa-plus add"></i>
               </button>
             </div>
             <span class="fs-6 text-danger" *ngIf="items.invalid">{{
@@ -242,7 +237,7 @@
             }}</span>
           </ng-container>
           <div>
-            <label class="form-label">{{ yourname }}</label>
+            <label class="form-label" class="fs-5">{{ yourname }}</label>
             <input
               type="text"
               formControlName="yourname"
@@ -256,10 +251,11 @@
     </form>
   </div>
   <div class="col-lg-6" style="width: 40%" id="copytext">
-    <div *ngIf="formControls['projectname'].dirty">
-     {{updatefor}} {{ ason }} {{ Date }} {{ Month }},{{ Year }}
-      <button class="end" (click)="copyText()">Click to copy</button>
-      <hr/>
+    <div *ngIf="formControls['projectname'].dirty" class="fs-5">
+      <br />
+      {{ updatefor }} {{ ason }} {{ Date }} {{ Month }},{{ Year }}
+      <button (click)="copyText()"><i class="fa fa-clone end"></i></button>
+      <hr />
     </div>
     <div *ngIf="formControls['clientname'].dirty">
       <p class="fs-4">{{ hi }}{{ formControls["clientname"].value }}</p>
@@ -272,56 +268,64 @@
       </p>
     </div>
     <div>
+      <br />
       <div *ngIf="formControls['completedTask'].dirty">
         <u class="fw-bold fs-5">{{ completed }}</u>
-       <div
-          class="margin"
+        <div
+          class="margin fs-4"
           *ngFor="let var of completedTask.value; let i = index"
         >
           {{ i + 1 }}.{{ completedTask.value[i] }}[done]
           <!-- <p class="fs-3">[done]</p> -->
         </div>
       </div>
+      <br />
       <div *ngIf="formControls['progresstask'].dirty">
         <u class="fw-bold fs-5">{{ progress }}</u>
         <div
-          class="margin"
+          class="margin fs-4"
           *ngFor="let var of progresstask.value; let i = index"
         >
           {{ i + 1 }}.{{ progresstask.value[i] }}
         </div>
       </div>
-      <div *ngIf="formControls['progresstask'].dirty">
+      <br />
+      <div *ngIf="formControls['panddingtask'].dirty">
         <u class="fw-bold fs-5">{{ pandding }}</u>
         <div
-          class="margin"
+          class="margin fs-4"
           *ngFor="let var of progresstask.value; let i = index"
         >
           {{ i + 1 }}.{{ panddingtask.value[i] }}
         </div>
       </div>
+      <br />
       <div *ngIf="formControls['queriestask'].dirty">
         <u class="fw-bold fs-5">{{ queires }}</u>
         <div
-          class="margin"
+          class="margin fs-4"
           *ngFor="let var of queriestask.value; let i = index"
         >
           {{ i + 1 }}.{{ queriestask.value[i] }}
         </div>
       </div>
+      <br />
       <div *ngIf="formControls['notestask'].dirty">
         <u class="fw-bold fs-5">{{ notes }}</u>
-        <div class="margin" *ngFor="let var of notestask.value; let i = index">
+        <div
+          class="margin fs-4"
+          *ngFor="let var of notestask.value; let i = index"
+        >
           {{ i + 1 }}.{{ notestask.value[i] }}
         </div>
+      </div>
+      <div *ngIf="formControls['completedTask'].dirty">
+        <p class="fs-4">{{ lastline }}</p>
       </div>
       <div *ngIf="formControls['yourname'].dirty">
         <p class="fs-4">{{ thanks }}<br /></p>
         <div class="fw-bold fs-4">{{ formControls["yourname"].value }}</div>
       </div>
-      <div *ngIf="formControls['completedTask'].dirty">
-      <p class="fs-4">{{ lastline }}</p>
-    </div>
     </div>
   </div>
 </div>

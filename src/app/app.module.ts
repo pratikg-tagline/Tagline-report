@@ -6,12 +6,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ReportFormarrayComponent } from './report-formarray/report-formarray.component';
 import { TaglineReportComponent } from './tagline-report/tagline-report.component';
+import { TaglinenavbarComponent } from './taglinenavbar/taglinenavbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ReportFormarrayComponent,
     TaglineReportComponent,
+    TaglinenavbarComponent,
     
   ],
   imports: [
