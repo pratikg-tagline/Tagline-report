@@ -5,11 +5,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ReportFormarrayComponent } from './report-formarray/report-formarray.component';
+import { TaglineReportComponent } from './tagline-report/tagline-report.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ReportFormarrayComponent,
+    TaglineReportComponent,
     
   ],
   imports: [

@@ -1,104 +1,122 @@
 <div class="form">
-    <form  [formGroup]="signupForm" (ngSubmit)="proceedsave()">
-        <div class="form-row">
-          <div class="col-6">
-              <div>
-                  <label class="text-dark" for="fname">{{ firstname }}</label>
-                  <input
-                    type="text"
-                    name="firstname"
-                    formControlName="firstname"
-                    class="form-control"
-                    placeholder="Your name.."
-                    aria-describedby="emailHelp"
-                  />
-                  
-                  <small
-                    class="form-text text-danger fs-5"
-                    *ngIf="
-                      errorshow['firstname'].touched && errorshow['firstname'].invalid
-                    "
-                    >{{ firstnamerequired }}</small
-                  >
-                </div>
-          
-                <div>
-                  <label class="text-dark" for="lname">{{ lastname }}</label>
-                  <input
-                    type="text"
-                    name="lastname"
-                    formControlName="lastname"
-                    class="form-control"
-                    placeholder="Your last name.."
-                  />
-                  <small
-                    class="form-text text-danger fs-5"
-                    *ngIf="
-                      errorshow['lastname'].touched && errorshow['lastname'].invalid
-                    "
-                    >{{ lastnamerequired }}</small
-                  >
-                </div>
-          
-                <div>
-                  <label class="text-dark" for="email">{{ email }}</label>
-                  <input
-                    type="email"
-                    name="email"
-                    formControlName="email"
-                    class="form-control"
-                    placeholder="Your email.."
-                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
-                  />
-                  <small
-                    class="form-text text-danger fs-5"
-                    *ngIf="errorshow['email'].touched && errorshow['email'].invalid"
-                    >{{ emailrequired }}</small
-                  >
-                </div>
-            <div formArrayName="deladdress">
-                      <div *ngFor="let items of deladdress.controls;let i=index">
-                          <div [formGroupName]="i">
-                           <h3>address of{{i}}</h3>
-                           <button type="submit"  class="btn btn-primary" (click)="remove(i)">remove</button>
-                           <label>street</label>
-                           <input formControlName="street">
-                           <label>city</label>
-                           <input formControlName="city">
-                           <label>state</label>
-                           <input formControlName="state">                                                                                                                                               
-                          </div>
-                      </div>
-                  </div>
-              
-                      <a type="submit"  class="btn btn-primary" (click)="Addnewrow()">Add New(+)</a>
-                  </div>
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="gridCheck" />
-                <label class="form-check-label" for="gridCheck"> Check me out </label>
-              
-            </div>
-            <button type="submit"  class="btn btn-primary">Sign in</button>
-            </div>
-          
-          
-        <div class="col-6">
-            <table>
-              <tr>
-                  <th>id</th>
-                  <th>{{firstname}}</th>
-                  <th>{{lastname}}</th>
-                  <th>{{email}}</th>
-             </tr>
-             <tr *ngFor="let object of array; let i=index">
-              <td>{{i+1}}</td>
-              <td>{{object.firstname}}</td>
-              <td>{{object.lastname}}</td>
-              <td>{{object.email}}</td>
-             </tr>
-            </table>
+  <form [formGroup]="signupForm" (ngSubmit)="proceedsave()">
+    <div class="form-row">
+      <div class="col-6">
+        <div>
+          <label class="text-dark" for="fname">{{ firstname }}</label>
+          <input
+            type="text"
+            name="firstname"
+            formControlName="firstname"
+            class="form-control"
+            placeholder="Your name.."
+            aria-describedby="emailHelp"
+          />
+
+          <small
+            class="form-text text-danger fs-5"
+            *ngIf="
+              errorshow['firstname'].touched && errorshow['firstname'].invalid
+            "
+            >{{ firstnamerequired }}</small
+          >
         </div>
-      </form>
+
+        <div>
+          <label class="text-dark" for="lname">{{ lastname }}</label>
+          <input
+            type="text"
+            name="lastname"
+            formControlName="lastname"
+            class="form-control"
+            placeholder="Your last name.."
+          />
+          <small
+            class="form-text text-danger fs-5"
+            *ngIf="
+              errorshow['lastname'].touched && errorshow['lastname'].invalid
+            "
+            >{{ lastnamerequired }}</small
+          >
+        </div>
+
+        <div>
+          <label class="text-dark" for="email">{{ email }}</label>
+          <input
+            type="email"
+            name="email"
+            formControlName="email"
+            class="form-control"
+            placeholder="Your email.."
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+          />
+          <small
+            class="form-text text-danger fs-5"
+            *ngIf="errorshow['email'].touched && errorshow['email'].invalid"
+            >{{ emailrequired }}</small
+          >
+        </div>
+        <div formArrayName="deladdress">
+          <div *ngFor="let items of deladdress.controls; let i = index">
+            <div [formGroupName]="i">
+              <h3>address of {{ i }}</h3>
+
+              <label>street</label>
+              <input class="form-control" formControlName="street" />
+
+              <label>city</label>
+              <input class="form-control" formControlName="city" />
+              <label>state</label>
+              <input class="form-control" formControlName="state" />
+              <div
+                [ngStyle]="{
+                  display: deladdress.controls.length == 3 ? 'none' : 'inline'
+                }"
+                (click)="Addnewrow()"
+              >
+                (+)
+              </div>
+              <div>
+                <div (click)="remove(i)">(-)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <a
+          type="submit"
+          [ngStyle]="{
+            display: deladdress.controls.length == 3 ? 'none' : 'inline'
+          }"
+          class="btn btn-primary"
+          (click)="Addnewrow()"
+          >Add New(+)</a
+        ><br />
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="gridCheck" />
+        <label class="form-check-label" for="gridCheck"> Check me out </label>
+      </div>
+      <button type="submit" class="btn btn-primary">Sign in</button>
+    </div>
+
+    <div class="col-6">
+      <table>
+        <tr>
+          <th>id</th>
+          <th>{{ firstname }}</th>
+          <th>{{ lastname }}</th>
+          <th>{{ email }}</th>
+        </tr>
+        <tr *ngFor="let object of array; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ object.firstname }}</td>
+          <td>{{ object.lastname }}</td>
+          <td>{{ object.email }}</td>
+        </tr>
+      </table>
+    </div>
+  </form>
 </div>
 
 <!-- <form [formGroup]="form">
