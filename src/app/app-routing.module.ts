@@ -1,13 +1,17 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ReportFormarrayComponent } from './report-formarray/report-formarray.component';
 import { TaglineReportComponent } from './tagline-report/tagline-report.component';
 
 const routes: Routes = [
-  {path:'req',
+  {path:'',
+   component:TaglineReportComponent
+  },
+  {path:'Request For Leave',
    component:TaglineReportComponent},
-   {path:'dai',
-   component:ReportFormarrayComponent}
+   {path:'Daily Updates',
+   component:ReportFormarrayComponent},
+   
 ];
 
 @NgModule({
