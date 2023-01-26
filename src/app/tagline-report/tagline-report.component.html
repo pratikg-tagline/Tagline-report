@@ -57,6 +57,7 @@
                 class="form-control custom-input list_of_completed_tasks"
                 [formControlName]="i"
                 placeholder="Completed Tasks"
+                
               />
               <button
                 type="button"
@@ -205,7 +206,7 @@
                 <i class="fa fa-plus"></i>
               </button>
             </div>
-            <h2 class="fs-5 text-danger" *ngIf="items.invalid">{{
+            <h2 class="fs-5 text-danger" *ngIf="items.invalid && items.touched">{{
               qerror
             }}</h2>
           </ng-container>
@@ -285,56 +286,62 @@
     </div>
     <div>
       <br />
-      <div *ngIf="formControls['completedTask'].dirty">
-        <u class="fw-bold fs-5">{{ completed }}</u>
-        <div
-          class="margin fs-5"
-          *ngFor="let var of completedTask.value; let i = index"
-        >
-          {{ i + 1 }}.{{ completedTask.value[i] }}<b>[Done]</b>
-          <!-- <p class="fs-3">[done]</p> -->
-        </div>
+      
+      <div *ngIf="completedTask.dirty">
+        <u class="fw-bold fs-5">{{ completed }}</u><br>
       </div>
+      <ng-container *ngFor="let abc of completedTask.value ;let i = index" >
+        <div class="margin fs-5" *ngIf="completedTask.controls[i].dirty && completedTask.controls[i].valid && completedTask.dirty ">
+           <!-- <u class="fw-bold fs-5">{{ completed }}</u><br> -->
+           {{ i + 1 }}.{{ completedTask.value[i] }}<b>[Done]</b>
+         </div>
+       </ng-container>
       <br />
-      <div *ngIf="formControls['progresstask'].dirty">
-        <u class="fw-bold fs-5">{{ progress }}</u>
-        <div
-          class="margin fs-5"
-          *ngFor="let var of progresstask.value; let i = index"
-        >
+      <div *ngIf="progresstask.dirty">
+        <u class="fw-bold fs-5">{{ progress }}</u><br>
+       
+      </div>
+      <ng-container *ngFor="let abc of progresstask.value ;let i = index" >
+        <div class="margin fs-5" *ngIf="progresstask.controls[i].dirty && progresstask.controls[i].valid && progresstask.dirty ">
+          
           {{ i + 1 }}.{{ progresstask.value[i] }}
-        </div>
-      </div>
+         </div>
+       </ng-container>
       <br />
-      <div *ngIf="formControls['panddingtask'].dirty">
-        <u class="fw-bold fs-5">{{ pandding }}</u>
-        <div
-          class="margin fs-5"
-          *ngFor="let var of progresstask.value; let i = index"
-        >
+      <div *ngIf="panddingtask.dirty">
+        <u class="fw-bold fs-5">{{ pandding }}</u><br>
+       
+      </div>
+      <ng-container *ngFor="let abc of panddingtask.value ;let i = index" >
+        <div class="margin fs-5" *ngIf="panddingtask.controls[i].dirty && panddingtask.controls[i].valid && panddingtask.dirty ">
+         
           {{ i + 1 }}.{{ panddingtask.value[i] }}
-        </div>
-      </div>
+         </div>
+       </ng-container>
       <br />
-      <div *ngIf="formControls['queriestask'].dirty">
-        <u class="fw-bold fs-5">{{ queires }}</u>
-        <div
-          class="margin fs-5"
-          *ngFor="let var of queriestask.value; let i = index"
-        >
+     
+      <div *ngIf="queriestask.dirty">
+        <u class="fw-bold fs-5">{{ queires }}</u><br>
+      
+      </div>
+      <ng-container *ngFor="let abc of queriestask.value ;let i = index" >
+        <div class="margin fs-5" *ngIf="queriestask.controls[i].dirty && queriestask.controls[i].valid && queriestask.dirty ">
+
           {{ i + 1 }}.{{ queriestask.value[i] }}
-        </div>
-      </div>
+         </div>
+       </ng-container>
       <br />
-      <div *ngIf="formControls['notestask'].dirty">
-        <u class="fw-bold fs-5">{{ notes }}</u>
-        <div
-          class="margin fs-5"
-          *ngFor="let var of notestask.value; let i = index"
-        >
-          {{ i + 1 }}.{{ notestask.value[i] }}
-        </div>
+     
+      <div *ngIf="notestask.dirty">
+        <u class="fw-bold fs-5">{{ notes }}</u><br>
+       
       </div>
+      <ng-container *ngFor="let abc of notestask.value ;let i = index" >
+        <div class="margin fs-5" *ngIf="notestask.controls[i].dirty && notestask.controls[i].valid && notestask.dirty ">
+         
+          {{ i + 1 }}.{{ notestask.value[i] }}
+         </div>
+       </ng-container>
       <div *ngIf="formControls['completedTask'].dirty">
         <p class="fs-4">{{ lastline }}</p>
       </div>

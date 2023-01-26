@@ -98,24 +98,42 @@ navigator.clipboard.writeText(text)
   Addnewrow(formarray:string){
     switch(formarray){  
        case 'completedTask':
-       this.completedTask.valid && this.completedTask.push(this.formControl());
-       this.completedTask.invalid && (this.cerror = this.cerrmsg);
+      if(this.completedTask.invalid) {
+        this.cerror = this.cerrmsg;
+       }  else{
+        this.cerror='';
+        this.completedTask.push(this.formControl())
+      };
        break;
        case 'progresstask':
-       this.progresstask.valid && this.progresstask.push(this.formControl());
-       this.progresstask.invalid && (this.perror = this.cerrmsg);
+       if(this.progresstask.invalid){
+        this.perror = this.cerrmsg
+      }else{
+        this.cerror='';
+        this.progresstask.push(this.formControl())
+      }
        break;
        case 'panddingtask':
-       this.panddingtask.valid && this.panddingtask.push(this.formControl());
-       this.panddingtask.invalid && (this.paerror = this.cerrmsg);
+       if(this.panddingtask.invalid){this.paerror = this.cerrmsg}
+       else{
+        this.cerror='';
+        this.panddingtask.push(this.formControl())
+       }
        break;
        case 'queriestask':
-       this.queriestask.valid && this.queriestask.push(this.formControl());
-       this.queriestask.invalid && (this.qerror = this.cerrmsg);
+       if(this.queriestask.invalid) {(this.qerror = this.cerrmsg)}
+       else{
+        this.cerror='';
+        this.queriestask.push(this.formControl())
+       }
        break;
        case 'notestask':
-       this.notestask.valid && this.notestask.push(this.formControl());
-       this.notestask.invalid && (this.nerror = this.cerrmsg);
+       
+       if(this.notestask.invalid) {this.nerror = this.cerrmsg}
+       else{
+        this.cerror='';
+        this.notestask.push(this.formControl())
+       }
        break;
     }
     // this.items=this.taglinereport.get("completedTask") as FormArray

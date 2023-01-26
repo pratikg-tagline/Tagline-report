@@ -1,5 +1,6 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { HttpclientComponent } from './httpclient/httpclient.component';
 import { ReportFormarrayComponent } from './report-formarray/report-formarray.component';
 import { TaglineReportComponent } from './tagline-report/tagline-report.component';
 
@@ -8,9 +9,9 @@ const routes: Routes = [
    component:TaglineReportComponent
   },
   {path:'Request For Leave',
-   component:TaglineReportComponent},
+   component:HttpclientComponent},
    {path:'Daily Updates',
-   component:ReportFormarrayComponent},
+   component:TaglineReportComponent},
    
 ];
 
