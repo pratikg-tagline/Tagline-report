@@ -9,9 +9,9 @@ const routes: Routes = [
    component:TaglineReportComponent
   },
   {path:'Request For Leave',
-   component:HttpclientComponent},
-   {path:'Daily Updates',
    component:TaglineReportComponent},
+   {path:'Daily Updates',
+   component:HttpclientComponent},
    
 ];
 

@@ -1,1 +1,154 @@
-<p>httpclient works!</p>
+
+<div class="row d-felx p-5">
+  
+    <div class="col-6 m-4">
+      <form [formGroup]="signupForm">
+        <!-- <div class="main text-center m-3">
+          form
+        </div> -->
+        <div>
+          <label class="text-dark m-2" for="title">Title</label>
+          <input
+            type="text"
+            name="title"
+            formControlName="title"
+            class="form-control"
+            placeholder="Your title.."
+            aria-describedby="emailHelp"
+          />
+          <small
+          class="form-text text-danger fs-5 mb-2"
+          *ngIf="
+            errorshow['title'].touched && errorshow['title'].invalid
+          "
+          > Please fill this first</small
+        >
+        </div>
+  
+        <div>
+          <label class="text-dark  m-2" for="description">Description</label>
+          <input
+            type="text"
+            name="description"
+            formControlName="description"
+            class="form-control"
+            placeholder="Your description.."
+          />
+          <small
+          class="form-text text-danger fs-5"
+          *ngIf="
+            errorshow['description'].touched && errorshow['description'].invalid
+          "
+          > Please fill this first</small
+        >
+        </div>
+        
+        <div>
+          <label class="text-dark  m-2" for="pageCount">PageCount</label>
+          <input
+            type="text"
+            name="pageCount"
+            formControlName="pageCount"
+            class="form-control"
+            placeholder="Your pageCount.."
+            maxlength="5"
+          />
+          <small
+          class="form-text text-danger fs-5"
+          *ngIf="
+            errorshow['pageCount'].touched && errorshow['pageCount'].invalid
+          "
+          > Please fill this first</small
+        >
+        </div>
+        <div>
+          <label class="text-dark  m-2" for="excerpt">Excerpt</label>
+          <input
+            type="text"
+            name="excerpt"
+            formControlName="excerpt"
+            class="form-control"
+            placeholder="Your excerpt.."
+          />
+          <small
+          class="form-text text-danger fs-5"
+          *ngIf="
+            errorshow['excerpt'].touched && errorshow['excerpt'].invalid
+          "
+          > Please fill this first</small
+        >
+        </div>
+        <div>
+          <label class="text-dark  m-2" for="pageCount">PublishDate</label>
+          <input
+            type="text"
+            name="publishDate"
+            formControlName="publishDate"
+            class="form-control"
+            placeholder="Your pageCount.."
+          />
+          <small
+          class="form-text text-danger fs-5"
+          *ngIf="
+            errorshow['publishDate'].touched && errorshow['publishDate'].invalid
+          "
+          > Please fill this first</small
+        >
+        </div><br>
+        <div class="text-center">
+          <button
+            type="button"
+            class="btn btn-outline-success"
+            (click)="datashow(signupForm.value)"
+          >
+            {{submit}}
+          </button>
+        </div>
+      </form>
+    </div>
+ 
+  
+  <div class="table-responsive col-6" style="width: 40%">
+    <table class="table">
+      <thead class="thead-light">
+        <tr>
+          <th >#</th>
+          <th scope="col" >Title</th>
+          <th scope="col">Description</th>
+          <th scope="col">PageCount</th>
+          <th scope="col">Excerpt</th>
+          <th scope="col">PublishDate</th>
+          <th scope="col">Edit</th>
+          <th scope="col">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let object of datas; let i = index">
+          <th scope="row">{{i+1}}</th>
+          <td class="shrink">{{ object.title }}</td>
+          <td class="shrink">{{ object.description }}</td>
+          <td class="shrink">{{ object.pageCount }}</td> 
+          <td class="shrink">{{ object.excerpt }}</td>
+          <td class="shrink">{{ object.publishDate }}</td>
+          <td>
+            <button
+              class="btn btn-outline-primary btn-lg"
+              (click)="editdata(object)"
+            >
+             edit
+            </button>
+          </td>
+         
+          <td>
+            <button
+              class="btn btn-outline-danger btn-lg"
+              (click)="BookDelete(i)"
+            >
+             delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
