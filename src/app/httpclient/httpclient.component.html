@@ -1,151 +1,214 @@
-
 <div class="row d-felx p-5">
-  
-    <div class="col-6 m-4">
-      <form [formGroup]="signupForm">
-        <!-- <div class="main text-center m-3">
-          form
-        </div> -->
-        <div>
-          <label class="text-dark m-2" for="title">Title</label>
-          <input
-            type="text"
-            name="title"
-            formControlName="title"
-            class="form-control"
-            placeholder="Your title.."
-            aria-describedby="emailHelp"
-          />
-          <small
-          class="form-text text-danger fs-5 mb-2"
-          *ngIf="
-            errorshow['title'].touched && errorshow['title'].invalid
-          "
-          > Please fill this first</small
-        >
+  <div class="col-6 m-4">
+    <form [formGroup]="signupForm">
+      <div class="main shadow-lg p-3 mb-5 bg-light rounded">
+        <div class="margin1 pt-4">
+          <p class="fw-bold text-start m-2">{{bookdetails}}</p>
         </div>
-  
-        <div>
-          <label class="text-dark  m-2" for="description">Description</label>
+        <div class="row d-flex">
+          <div class="col-5 margin">
+            <label class="text-dark m-2 col-8" for="title">{{ title }}</label>
+            <input
+              type="text"
+              name="title"
+              formControlName="title"
+              class="form-control"
+              placeholder="Enter Book Number.."
+              aria-describedby="emailHelp"
+            />
+            <small
+              class="fw-bold text-danger"
+              *ngIf="errorshow['title'].touched && errorshow['title'].invalid"
+            >
+              {{ pleasefileform }}</small
+            >
+          </div>
+          <div class="col-5">
+            <div>
+              <label class="text-dark m-2" for="pageCount">{{
+                pagecount
+              }}</label>
+              <input
+                type="text"
+                name="pageCount"
+                formControlName="pageCount"
+                class="form-control"
+                placeholder="Enter Book Page-count.."
+                maxlength="5"
+              />
+              <small
+                class="fw-bold text-danger"
+                *ngIf="
+                  errorshow['pageCount'].touched &&
+                  errorshow['pageCount'].invalid
+                "
+              >
+                {{ pleasefileform }}</small
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="col-10 margin">
+          <label class="text-dark m-2" for="description">{{
+            description
+          }}</label>
           <input
             type="text"
             name="description"
             formControlName="description"
             class="form-control"
-            placeholder="Your description.."
+            placeholder="Enter Book Description.."
           />
           <small
-          class="form-text text-danger fs-5"
-          *ngIf="
-            errorshow['description'].touched && errorshow['description'].invalid
-          "
-          > Please fill this first</small
-        >
+            class="fw-bold text-danger"
+            *ngIf="
+              errorshow['description'].touched &&
+              errorshow['description'].invalid
+            "
+          >
+            {{ pleasefileform }}</small
+          >
         </div>
-        
-        <div>
-          <label class="text-dark  m-2" for="pageCount">PageCount</label>
-          <input
-            type="text"
-            name="pageCount"
-            formControlName="pageCount"
-            class="form-control"
-            placeholder="Your pageCount.."
-            maxlength="5"
-          />
-          <small
-          class="form-text text-danger fs-5"
-          *ngIf="
-            errorshow['pageCount'].touched && errorshow['pageCount'].invalid
-          "
-          > Please fill this first</small
-        >
-        </div>
-        <div>
-          <label class="text-dark  m-2" for="excerpt">Excerpt</label>
+        <div class="col-10 margin">
+          <label class="text-dark m-2" for="excerpt">{{ excerpt }}</label>
           <input
             type="text"
             name="excerpt"
             formControlName="excerpt"
             class="form-control"
-            placeholder="Your excerpt.."
+            placeholder="Enter Book Excerpt.."
           />
           <small
-          class="form-text text-danger fs-5"
-          *ngIf="
-            errorshow['excerpt'].touched && errorshow['excerpt'].invalid
-          "
-          > Please fill this first</small
-        >
+            class="fw-bold text-danger"
+            *ngIf="errorshow['excerpt'].touched && errorshow['excerpt'].invalid"
+          >
+            {{ pleasefileform }}</small
+          >
         </div>
-        <div>
-          <label class="text-dark  m-2" for="pageCount">PublishDate</label>
+        <div class="col-10 margin">
+          <label class="text-dark m-2" for="pageCount">{{ publishDate }}</label>
           <input
             type="text"
             name="publishDate"
             formControlName="publishDate"
             class="form-control"
-            placeholder="Your pageCount.."
+            placeholder="Enter Book Publish-date.."
           />
           <small
-          class="form-text text-danger fs-5"
-          *ngIf="
-            errorshow['publishDate'].touched && errorshow['publishDate'].invalid
-          "
-          > Please fill this first</small
+            class="fw-bold text-danger"
+            *ngIf="
+              errorshow['publishDate'].touched &&
+              errorshow['publishDate'].invalid
+            "
+          >
+            {{ pleasefileform }}</small
+          >
+        </div>
+        <br />
+        <div
+          class="fw-bold text-danger margin1"
+          *ngIf="this.signupForm.invalid"
         >
-        </div><br>
+          {{ formerror }}
+        </div>
         <div class="text-center">
           <button
             type="button"
-            class="btn btn-outline-success"
+            class="btn btn-outline-success mt-4"
             (click)="datashow(signupForm.value)"
           >
-            {{submit}}
+            {{ submit }}
           </button>
         </div>
-      </form>
-    </div>
- 
-  
+        <p class="text-center m-2">{{ forms }}{{ signupForm.status }}</p>
+      </div>
+    </form>
+  </div>
+
   <div class="table-responsive col-6" style="width: 40%">
     <table class="table">
       <thead class="thead-light">
         <tr>
-          <th >#</th>
-          <th scope="col" >Title</th>
-          <th scope="col">Description</th>
-          <th scope="col">PageCount</th>
-          <th scope="col">Excerpt</th>
-          <th scope="col">PublishDate</th>
-          <th scope="col">Edit</th>
-          <th scope="col">Delete</th>
+          <!-- <th>#</th> -->
+          <th scope="col">{{ title }}</th>
+          <th scope="col">{{ description }}</th>
+          <th scope="col">{{ pagecount }}</th>
+          <th scope="col">{{ excerpt }}</th>
+          <th scope="col">{{ publishDate }}</th>
+          <th scope="col">{{ edit }}</th>
+          <th scope="col">{{ delete }}</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let object of datas; let i = index">
-          <th scope="row">{{i+1}}</th>
-          <td class="shrink">{{ object.title }}</td>
-          <td class="shrink">{{ object.description }}</td>
-          <td class="shrink">{{ object.pageCount }}</td> 
-          <td class="shrink">{{ object.excerpt }}</td>
-          <td class="shrink">{{ object.publishDate }}</td>
+        <tr *ngFor="let user of booksData; let i = index">
+          <!-- <th scope="row">{{ i + 1 }}</th> -->
+          <td>{{ user.title }}</td>
+          <td class="shrink">{{ user.description }}</td>
+          <td class="shrink">{{ user.pageCount }}</td>
+          <td class="shrink">{{ user.excerpt }}</td>
+          <td class="shrink">{{ user.publishDate }}</td>
           <td>
+            
             <button
               class="btn btn-outline-primary btn-lg"
-              (click)="editdata(object)"
+              (click)="editdata(user,i)"
             >
-             edit
+              {{ edit }}
             </button>
           </td>
-         
+
           <td>
             <button
-              class="btn btn-outline-danger btn-lg"
-              (click)="BookDelete(i)"
+              type="button"
+              class="btn btn-outline-primary btn-lg"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
+              (click)="deleteFind(i)"
             >
-             delete
+              {{ delete }}
             </button>
+            <div
+              class="modal fade"
+              id="exampleModal"
+              tabindex="-1"
+              aria-labelledby="exampleModalLabel" 
+              aria-hidden="true"
+            >
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                     Are you sure bookdata delete
+                    </h5>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <div class="modal-body">...</div>
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn btn-secondary"
+                      data-bs-dismiss="modal"
+                    >
+                      Close
+                    </button>
+                    <button
+                      type="button"
+                      (click)="BookDelete()"
+                      class="btn btn-primary"
+                      data-bs-dismiss="modal"
+                    >
+                      delete
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </td>
         </tr>
       </tbody>

@@ -1,8 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterContentInit, Component, OnInit } from '@angular/core';
+import 'ngx-toastr/toastr';
 
 import { BookService } from '../book.service';
 import { FormArray, NgForm, Validators } from '@angular/forms';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+import { Observable, observable, Observer } from 'rxjs';
+import { Book } from '../common';
+
 
 @Component({
   selector: 'app-httpclient',
@@ -12,16 +17,31 @@ import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 export class HttpclientComponent implements OnInit {
   signupForm!: FormGroup;
   datas: any;
+  booksData: any;
   userId: any;
+  bookIndex!: number;
+  formerror: string = '';
+  forms: string = 'Forms:';
   submit: string = 'Submit';
+  edit: string = 'Edit';
+  delete: string = 'Delete';
+  basicinfotmation: string = 'Enter Basic Information';
+  bookdetails:string='Book Details';
+  pleaseform: string = 'Please fill out this form.';
+  title: string = 'Title';
+  pleasefileform: string = 'Please fill this first';
+  pagecount: string = 'PageCount';
+  description: string = 'Description';
+  excerpt: string = 'Excerpt';
+  publishDate: string = 'PublishDate';
   submmited: boolean = false;
+  deleteId!:number
 
-  constructor(private bookservice: BookService, private fb: FormBuilder) {
-    this.bookservice.getData().subscribe((res) => {
-      // console.log('res :>> ', res);
-      this.datas = res;
-    });
-  }
+  constructor(
+    private bookservice: BookService,
+    private fb: FormBuilder,
+    private toastr: ToastrService
+  ) {}
 
   ngOnInit(): void {
     this.signupForm = this.fb.group({
@@ -31,46 +51,80 @@ export class HttpclientComponent implements OnInit {
       excerpt: this.fb.control('', Validators.required),
       publishDate: this.fb.control('', Validators.required),
     });
+    // const observable = new Observable((sub) => {
+    //   setTimeout(() => {
+    //     sub.next('observable working....');
+    //     sub.next('observable working....1');
+    //     sub.next('observable working....2');
+    //     sub.next('observable working....3');
+    //     sub.next('observable working....4');
+    //     sub.next('observable working....5');
+    //   }, 5000);
+    // });
+    // observable.subscribe((result: any) => console.log('object :>> ', result));
+
+    // const obs =new Observable((observer)=>{
+    //  console.log('startingobs :>> ', 'startingobs');
+
+    // })
+    this.getBookDetails();
   }
+
   get errorshow() {
     return this.signupForm.controls;
   }
 
-  BookDelete(data: number) {
-    this.bookservice.deleteData(data).subscribe((responce) => {
-      this.datas.splice(data, 1);
+  getBookDetails() {
+    this.bookservice.getData().subscribe((res) => {
+      this.datas = res;
+
+      let customeObservable = new Observable((observer: Observer<any>) => {
+        observer.next(this.datas);
+        
+      });
+       customeObservable.subscribe((data: Book) => {
+        this.booksData = data;
+      });
     });
   }
-  editdata(data: any) {
-    this.userId = data.id;
-    //  console.log('userId :>> ', this.userId);
-    this.submit = 'Update';
-    //  console.log(data.id);
-    this.signupForm.patchValue(data);
-    // console.log('data :>> ', data);
+  deleteFind(i: number) {
+    this.deleteId = i;
   }
-  datashow(signupForm: any) {
+  BookDelete() {
+    this.bookservice.deleteData(this.deleteId).subscribe((responce) => {
+      this.datas.splice(this.deleteId, 1);
+      this.toastr.error('Delete data!');
+    });
+  }
+  editdata(data: Book, index: number) {
+    this.userId = data.id;
+
+    this.submit = 'Update';
+    this.bookIndex = index;
+
+    this.signupForm.patchValue(data);
+  }
+  datashow(signupForm:any) {
     if (this.signupForm.invalid) {
+      this.formerror = 'Please field form correctly';
       this.submmited = true;
       return;
     } else {
+      this.formerror = '';
       this.submit = 'Submit';
       if (this.userId) {
-        const index: number = this.datas.findIndex(
-          (res: any) => res.id === this.userId
+        const data = {
+          id: this.userId,
+          ...this.signupForm.value,
+        };
+        this.bookservice.updateData(data).subscribe(
+          (res) => {
+            this.datas[this.bookIndex] = {
+              ...res,
+            };
+          },
+          (err) => console.log('err >> ', err)
         );
-        // console.log('index :>> ', this.userId);
-        const data ={
-          id:this.userId,
-            ...this.signupForm.value,
-          
-        }
-        this.bookservice.updateData(data).subscribe((res)=>{
-          this.datas[index]={
-            ...res,
-          };
-        })
-        // console.log('this.datas :>> ', this.datas);
       } else {
         delete this.signupForm.value.publishDate;
         const data = {
@@ -79,28 +133,15 @@ export class HttpclientComponent implements OnInit {
           pageCount: Number(this.signupForm.value.pageCount),
           publishDate: new Date(),
         };
-        this.bookservice.postdata(data).subscribe((res) => {
-          // console.log('resjfgj :>> ', res);;
-          this.datas.unshift(res);
-          //  console.log('data2 :>> ', data);
-        });
+        this.bookservice.postdata(data).subscribe(
+          (res) => {
+            this.datas.unshift(res);
+          },
+          (err) => this.toastr.error(err.message)
+        );
       }
       this.userId = 0;
       this.signupForm.reset();
     }
   }
 }
-// delete this.signupForm.value.publishDate
-//   const data = {
-//     ...this.signupForm.value,
-//     pageCount: Number(this.signupForm.value.pageCount),
-//     publishDate: new Date()
-//   }
-//   this.bookservice.postdata(data).subscribe((res)=>{
-//     // console.log('resjfgj :>> ', res);;
-//     this.datas.unshift(data);
-//     // console.log('data2 :>> ', data);
-
-//    })
-//   //  this.userId = 0;
-//   //     this.signupForm.reset();

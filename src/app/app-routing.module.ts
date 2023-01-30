@@ -5,18 +5,13 @@ import { ReportFormarrayComponent } from './report-formarray/report-formarray.co
 import { TaglineReportComponent } from './tagline-report/tagline-report.component';
 
 const routes: Routes = [
-  {path:'',
-   component:TaglineReportComponent
-  },
-  {path:'Request For Leave',
-   component:TaglineReportComponent},
-   {path:'Daily Updates',
-   component:HttpclientComponent},
-   
+  { path: '', component: TaglineReportComponent },
+  { path: 'form', component: TaglineReportComponent },
+  { path: 'updates', component: HttpclientComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

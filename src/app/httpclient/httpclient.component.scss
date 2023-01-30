@@ -2,6 +2,10 @@
 // 	background: #e91405;
 // 	border: 1px solid  #e91405;
 // }
+.margin1{
+  margin-left: 79px;
+ 
+}
 // body{
 // 	background: #E2E5EE;
 // }
@@ -25,6 +29,10 @@
 // .btn:focus{
 // 	box-shadow: none;
 // }
+.margin{
+  margin-left: 70px;
+ 
+}
 .shrink {
     white-space: nowrap; 
     text-overflow: ellipsis; 
@@ -36,12 +44,15 @@
     border: 1px solid red;
      ;
   }
-  
+  .main{
+    background-color: rgb(195, 237, 237);
+    width: 900px;
+    height: auto;
+    border-radius: 20px;
+    margin-left: 100px;
+  }
   small.ng-invalid.ng-touched{
     border: 1px solid red;
   }
-  .main{
-    background-color: grey;
-    border-radius: 3px;
-  }
+
  
