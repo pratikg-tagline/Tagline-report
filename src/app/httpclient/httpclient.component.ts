@@ -1,12 +1,12 @@
 import { AfterContentInit, Component, OnInit } from '@angular/core';
 import 'ngx-toastr/toastr';
-
 import { BookService } from '../book.service';
 import { FormArray, NgForm, Validators } from '@angular/forms';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { Observable, observable, Observer } from 'rxjs';
+import { Observable, observable, Observer, Subscription } from 'rxjs';
 import { Book } from '../common';
+import { NgIfContext } from '@angular/common';
 
 
 @Component({
@@ -25,6 +25,7 @@ export class HttpclientComponent implements OnInit {
   submit: string = 'Submit';
   edit: string = 'Edit';
   delete: string = 'Delete';
+  customeObservable: any 
   basicinfotmation: string = 'Enter Basic Information';
   bookdetails:string='Book Details';
   pleaseform: string = 'Please fill out this form.';
@@ -68,8 +69,11 @@ export class HttpclientComponent implements OnInit {
 
     // })
     this.getBookDetails();
+    
   }
-
+//   ngOnDestroy() {
+//     this.customeObservable.unsubscribe();
+// }
   get errorshow() {
     return this.signupForm.controls;
   }
@@ -78,12 +82,18 @@ export class HttpclientComponent implements OnInit {
     this.bookservice.getData().subscribe((res) => {
       this.datas = res;
 
-      let customeObservable = new Observable((observer: Observer<any>) => {
+      this.customeObservable = new Observable((observer: Observer<any>) => {
         observer.next(this.datas);
+        // observer.next(1);
+        // observer.next(2);
+        // observer.next(3);
+        // observer.complete();
+        // return {unsubscribe() {}};
         
       });
-       customeObservable.subscribe((data: Book) => {
+       this.customeObservable.subscribe((data: Book) => {
         this.booksData = data;
+      
       });
     });
   }
