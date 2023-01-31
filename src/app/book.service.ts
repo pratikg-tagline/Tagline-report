@@ -11,15 +11,15 @@ export class BookService {
   private url='https://fakerestapi.azurewebsites.net//api/v1/Books/'
   constructor(private http: HttpClient) { }
   public getData():Observable<any> {
-    return this.http.get(`${environment.baseURL}`);
+    return this.http.get(this.url);
   }
   public postdata(user:any):Observable<any> {
-    return this.http.post(`${environment.baseURL}`,user);
+    return this.http.post(this.url,user);
   }
   public deleteData(id:any):Observable<any> {
     return this.http.delete(this.url + id);
   }
   public updateData(user:any):Observable<any>{
-    return this.http.put(`${environment.baseURL}` + '/' + user.id , user);
+    return this.http.put(this.url + '/' + user.id , user);
   }
 }

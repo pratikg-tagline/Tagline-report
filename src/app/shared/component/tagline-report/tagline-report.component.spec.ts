@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TaglineReportComponent } from './TaglineReportComponent';
+import { TaglineReportComponent } from './tagline-report.component';
 
 describe('TaglineReportComponent', () => {
   let component: TaglineReportComponent;

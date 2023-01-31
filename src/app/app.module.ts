@@ -5,16 +5,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ReportFormarrayComponent } from './report-formarray/report-formarray.component';
-import { TaglineReportComponent } from './tagline-report/tagline-report.component';
-import { TaglinenavbarComponent } from './taglinenavbar/taglinenavbar.component';
-import { HttpclientComponent } from './httpclient/httpclient.component';
-import { HttpClientModule } from  '@angular/common/http';
+import { TaglineReportComponent } from './shared/component/tagline-report/tagline-report.component';
+import { TaglinenavbarComponent } from './shared/component/taglinenavbar/taglinenavbar.component';
+import { HttpclientComponent } from './shared/component/httpclient/httpclient.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from  '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
+import { AccesstokenInterceptor } from './shared/intercepter/accesstoken.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
     ReportFormarrayComponent,
-    TaglineReportComponent,
+   TaglineReportComponent,
     TaglinenavbarComponent,
     HttpclientComponent,
      ],
@@ -27,7 +28,11 @@ import { ToastrModule } from 'ngx-toastr';
     HttpClientModule,
     ToastrModule.forRoot(),
   ],
-  providers: [],
+  providers: [
+    {
+      provide:HTTP_INTERCEPTORS, useClass:AccesstokenInterceptor ,multi:true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

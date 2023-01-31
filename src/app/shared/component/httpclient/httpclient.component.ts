@@ -1,11 +1,11 @@
 import { AfterContentInit, Component, OnInit } from '@angular/core';
 import 'ngx-toastr/toastr';
-import { BookService } from '../book.service';
+import { BookService } from '../../../book.service';
 import { FormArray, NgForm, Validators } from '@angular/forms';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Observable, observable, Observer, Subscription } from 'rxjs';
-import { Book } from '../common';
+import { Book } from '../../../common';
 import { NgIfContext } from '@angular/common';
 
 

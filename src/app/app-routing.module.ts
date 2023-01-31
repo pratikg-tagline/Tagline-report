@@ -1,8 +1,8 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HttpclientComponent } from './httpclient/httpclient.component';
+import { HttpclientComponent } from './shared/component/httpclient/httpclient.component';
 import { ReportFormarrayComponent } from './report-formarray/report-formarray.component';
-import { TaglineReportComponent } from './tagline-report/tagline-report.component';
+import { TaglineReportComponent } from './shared/component/tagline-report/tagline-report.component';
 
 const routes: Routes = [
   { path: '', component: TaglineReportComponent },
