@@ -10,6 +10,8 @@ import { NgIfContext } from '@angular/common';
 import { BookService } from 'src/app/book.service';
 import { Book } from 'src/app/common';
 import { ActivatedRoute } from '@angular/router';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
+
 
 
 @Component({
@@ -46,15 +48,12 @@ export class HttpclientComponent implements OnInit {
     private bookservice: BookService,
     private fb: FormBuilder,
     private toastr: ToastrService,
+    private ngxService: NgxUiLoaderService,
     private activatedRoute: ActivatedRoute
   ) {this.booksData = this.activatedRoute.snapshot.data['datas']}
 
   ngOnInit(): void {
-    // this.spinnerService.show();
-
-    // setTimeout(() => {
-    //   this.spinnerService.hide();
-    // }, 5000); 
+   
     this.signupForm = this.fb.group({
       title: this.fb.control('', Validators.required),
       description: this.fb.control('', Validators.required),

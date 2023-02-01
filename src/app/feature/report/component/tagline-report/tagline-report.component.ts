@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormArray, NgForm, Validators } from '@angular/forms';
 import { FormGroup,FormControl, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-tagline-report',
@@ -54,7 +55,7 @@ export class TaglineReportComponent implements OnInit {
   Month: string = this.Months[this.fullDate.getMonth()];
   Year: string = this.fullDate.getFullYear(); 
   
-  constructor(private fb:FormBuilder) { }
+  constructor(private fb:FormBuilder ) { }
 
   ngOnInit(): void {
     this.taglinereport=this.fb.group({

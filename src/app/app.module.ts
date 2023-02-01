@@ -14,6 +14,8 @@ import { TaglineReportComponent } from './feature/report/component/tagline-repor
 import { TaglinenavbarComponent } from './feature/report/component/taglinenavbar/taglinenavbar.component';
 import { HttpclientComponent } from './feature/http/components/httpclient/httpclient.component';
 import { AccesstokenInterceptor } from './shared/interceptor/accesstoken.interceptor';
+import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,9 +31,14 @@ import { AccesstokenInterceptor } from './shared/interceptor/accesstoken.interce
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    NgxUiLoaderModule,
+    NgxUiLoaderHttpModule.forRoot({
+      showForeground:true
+    }),
+
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
-    NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' })
+    
   ],
   providers: [
  {

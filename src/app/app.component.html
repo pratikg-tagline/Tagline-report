@@ -1,6 +1,9 @@
+<ngx-ui-loader fgsColor="#ee82ee" pbColor="#ee82ee" text="Please Wait..." textColor="white" ></ngx-ui-loader>
 
-<app-taglinenavbar></app-taglinenavbar>
+
 <!-- <app-tagline-report></app-tagline-report> -->
 <!-- <app-report-formarray></app-report-formarray> -->
-
-<router-outlet></router-outlet>
+<div ngxUiLoaderBlurred >
+    <app-taglinenavbar></app-taglinenavbar>
+    <router-outlet></router-outlet>
+  </div>
