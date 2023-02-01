@@ -1,12 +1,15 @@
 import { AfterContentInit, Component, OnInit } from '@angular/core';
 import 'ngx-toastr/toastr';
-import { BookService } from '../../../book.service';
+
 import { FormArray, NgForm, Validators } from '@angular/forms';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Observable, observable, Observer, Subscription } from 'rxjs';
-import { Book } from '../../../common';
+
 import { NgIfContext } from '@angular/common';
+import { BookService } from 'src/app/book.service';
+import { Book } from 'src/app/common';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -37,14 +40,21 @@ export class HttpclientComponent implements OnInit {
   publishDate: string = 'PublishDate';
   submmited: boolean = false;
   deleteId!:number
+ 
 
   constructor(
     private bookservice: BookService,
     private fb: FormBuilder,
-    private toastr: ToastrService
-  ) {}
+    private toastr: ToastrService,
+    private activatedRoute: ActivatedRoute
+  ) {this.booksData = this.activatedRoute.snapshot.data['datas']}
 
   ngOnInit(): void {
+    // this.spinnerService.show();
+
+    // setTimeout(() => {
+    //   this.spinnerService.hide();
+    // }, 5000); 
     this.signupForm = this.fb.group({
       title: this.fb.control('', Validators.required),
       description: this.fb.control('', Validators.required),
@@ -68,7 +78,8 @@ export class HttpclientComponent implements OnInit {
     //  console.log('startingobs :>> ', 'startingobs');
 
     // })
-    this.getBookDetails();
+    // this.getBookDetails();
+  
     
   }
 //   ngOnDestroy() {

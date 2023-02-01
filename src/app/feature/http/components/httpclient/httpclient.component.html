@@ -1,3 +1,6 @@
+<!-- <ngx-spinner size="medium" >
+  <p>loading..</p>
+</ngx-spinner> -->
 <div class="row d-felx p-5">
   <div class="col-6 m-4">
     <form [formGroup]="signupForm">
@@ -127,6 +130,7 @@
   </div>
 
   <div class="table-responsive col-6" style="width: 40%">
+    <!-- <ngx-spinner type="ball-scale-multiple"></ngx-spinner> -->
     <table class="table">
       <thead class="thead-light">
         <tr>
@@ -161,7 +165,7 @@
           <td>
             <button
               type="button"
-              class="btn btn-outline-primary btn-lg"
+              class="btn btn-outline-danger btn-lg"
               data-bs-toggle="modal"
               data-bs-target="#exampleModal"
               (click)="deleteFind(i)"
@@ -200,10 +204,10 @@
                     <button
                       type="button"
                       (click)="BookDelete()"
-                      class="btn btn-primary"
+                      class="btn btn-danger"
                       data-bs-dismiss="modal"
                     >
-                      delete
+                     {{delete}}
                     </button>
                   </div>
                 </div>

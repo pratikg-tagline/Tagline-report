@@ -6,15 +6,18 @@ import {
   HttpInterceptor,
   HttpErrorResponse
 } from '@angular/common/http';
-import { catchError, map, Observable, retry, throwError } from 'rxjs';
-import { AuthserviceService } from '../service/authservice.service';
+import { catchError, map, Observable, throwError } from 'rxjs';
+
 import { ToastrService } from 'ngx-toastr';
+import { AuthserviceService } from './service/authservice.service';
+
 
 @Injectable()
 export class AccesstokenInterceptor implements HttpInterceptor {
- 
 
-  constructor(private authserviceService :AuthserviceService , private toastr: ToastrService) {}
+  constructor(private authserviceService :AuthserviceService , private toastr:ToastrService){}
+
+
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     request=request.clone({
@@ -40,5 +43,4 @@ export class AccesstokenInterceptor implements HttpInterceptor {
         return throwError(errorMsg);
       })
     )
-  }
-}
+  }}

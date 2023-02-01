@@ -5,12 +5,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ReportFormarrayComponent } from './report-formarray/report-formarray.component';
-import { TaglineReportComponent } from './shared/component/tagline-report/tagline-report.component';
-import { TaglinenavbarComponent } from './shared/component/taglinenavbar/taglinenavbar.component';
-import { HttpclientComponent } from './shared/component/httpclient/httpclient.component';
+
 import { HttpClientModule, HTTP_INTERCEPTORS } from  '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
-import { AccesstokenInterceptor } from './shared/intercepter/accesstoken.interceptor';
+
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { TaglineReportComponent } from './feature/report/component/tagline-report/tagline-report.component';
+import { TaglinenavbarComponent } from './feature/report/component/taglinenavbar/taglinenavbar.component';
+import { HttpclientComponent } from './feature/http/components/httpclient/httpclient.component';
+import { AccesstokenInterceptor } from './shared/interceptor/accesstoken.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,11 +30,13 @@ import { AccesstokenInterceptor } from './shared/intercepter/accesstoken.interce
     ReactiveFormsModule,
     HttpClientModule,
     ToastrModule.forRoot(),
+    BrowserAnimationsModule,
+    NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' })
   ],
   providers: [
-    {
-      provide:HTTP_INTERCEPTORS, useClass:AccesstokenInterceptor ,multi:true
-    }
+ {
+  provide:HTTP_INTERCEPTORS,useClass:AccesstokenInterceptor,multi:true
+ }
   ],
   bootstrap: [AppComponent]
 })
