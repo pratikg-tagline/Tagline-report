@@ -41,7 +41,9 @@ export class HttpclientComponent implements OnInit {
   excerpt: string = 'Excerpt';
   publishDate: string = 'PublishDate';
   submmited: boolean = false;
-  deleteId!:number
+  deleteId!:number;
+ 
+
  
 
   constructor(
@@ -53,31 +55,22 @@ export class HttpclientComponent implements OnInit {
   ) {this.booksData = this.activatedRoute.snapshot.data['datas']}
 
   ngOnInit(): void {
-   
+  
     this.signupForm = this.fb.group({
       title: this.fb.control('', Validators.required),
-      description: this.fb.control('', Validators.required),
+      description: this.fb.control('', Validators.required),  
       pageCount: this.fb.control('', Validators.required),
       excerpt: this.fb.control('', Validators.required),
       publishDate: this.fb.control('', Validators.required),
     });
-    // const observable = new Observable((sub) => {
-    //   setTimeout(() => {
-    //     sub.next('observable working....');
-    //     sub.next('observable working....1');
-    //     sub.next('observable working....2');
-    //     sub.next('observable working....3');
-    //     sub.next('observable working....4');
-    //     sub.next('observable working....5');
-    //   }, 5000);
-    // });
+    
     // observable.subscribe((result: any) => console.log('object :>> ', result));
 
     // const obs =new Observable((observer)=>{
     //  console.log('startingobs :>> ', 'startingobs');
 
     // })
-    // this.getBookDetails();
+   this.getBookDetails();
   
     
   }

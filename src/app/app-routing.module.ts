@@ -5,10 +5,13 @@ import { AccessresolverResolver } from './feature/http/resolver/accessresolver.r
 import { TaglineReportComponent } from './feature/report/component/tagline-report/tagline-report.component';
 
 import { ReportFormarrayComponent } from './report-formarray/report-formarray.component';
+import { PipeComponent } from './shared/pipe/pipe.component';
 
 const routes: Routes = [
   { path: '', component: TaglineReportComponent },
   { path: 'form', component: TaglineReportComponent },
+  { path: 'pipe', component: PipeComponent },
+
   {
     path: 'updates',
     component: HttpclientComponent,

@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ReportFormarrayComponent } from './report-formarray/report-formarray.component';
 
-import { HttpClientModule, HTTP_INTERCEPTORS } from  '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 
 import { NgxSpinnerModule } from 'ngx-spinner';
@@ -15,15 +15,19 @@ import { TaglinenavbarComponent } from './feature/report/component/taglinenavbar
 import { HttpclientComponent } from './feature/http/components/httpclient/httpclient.component';
 import { AccesstokenInterceptor } from './shared/interceptor/accesstoken.interceptor';
 import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
+import { PipeComponent } from './shared/pipe/pipe.component';
+import { FilterpipePipe } from './shared/filterpipe/filterpipe.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     ReportFormarrayComponent,
-   TaglineReportComponent,
+    TaglineReportComponent,
     TaglinenavbarComponent,
     HttpclientComponent,
-     ],
+    PipeComponent,
+    FilterpipePipe
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -33,18 +37,19 @@ import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
     HttpClientModule,
     NgxUiLoaderModule,
     NgxUiLoaderHttpModule.forRoot({
-      showForeground:true
+      showForeground: true,
     }),
 
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
-    
   ],
   providers: [
- {
-  provide:HTTP_INTERCEPTORS,useClass:AccesstokenInterceptor,multi:true
- }
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AccesstokenInterceptor,
+      multi: true,
+    },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

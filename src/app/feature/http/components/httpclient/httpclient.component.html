@@ -124,11 +124,14 @@
             {{ submit }}
           </button>
         </div>
-        <p class="text-center m-2">{{ forms }}{{ signupForm.status }}</p>
+       <a class="btn btn-primary" routerLink="/pipe">pipe display</a>
+      
+       
+        <p class="text-center m-2" *ngIf="">{{ forms }}{{ signupForm.status }}</p>
       </div>
     </form>
   </div>
-
+  
   <div class="table-responsive col-6" style="width: 40%">
     <!-- <ngx-spinner type="ball-scale-multiple"></ngx-spinner> -->
     <table class="table">
