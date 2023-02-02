@@ -9,24 +9,52 @@ import { Component, OnInit } from '@angular/core';
 export class PipeComponent implements OnInit {
   title: string = 'Title';
   email:string='Email'
-  tdate:string='tdate'
+  date:string='tdate'
   gender:string='gender'
 
   search:string=''
   array:any[] = [
     {
       title:'name',
-      name:'pratik',
-      email:'pratik@gmail.com',
-      tdate:new Date('11-11-2019'),
+      name:'Pratik',
+      email:'Pratik@gmail.com',
+      date:new Date(),
       gender:'male'
     },
     {
       title:'name',
-      name:'pratiksha',
-      email:'pratiksha@gmail.com',
-      tdate:new Date('11-08-2019'),
+      name:'Pratiksha',
+      email:'Pratiksha@gmail.com',
+      date:new Date(),
       gender:'female'
+    },
+    {
+      title:'name',
+      name:'Raj',
+      email:'Raj@gmail.com',
+      date:new Date(),
+      gender:'male'
+    },
+    {
+      title:'name',
+      name:'Tejash',
+      email:'Tejash@gmail.com',
+      date:new Date(),
+      gender:'male'
+    },
+    {
+      title:'name',
+      name:'Jaydeep',
+      email:'Jaydeep@gmail.com',
+      date:new Date(),
+      gender:'male'
+    },
+    {
+      title:'name',
+      name:'Dharmik',
+      email:'Dharmik@gmail.com',
+      date:new Date(),
+      gender:'male'
     },
   ];
   dateToday!: string;
@@ -38,7 +66,12 @@ export class PipeComponent implements OnInit {
   pi: number = 3.14159265359;
   num2:number = 1000000;
   percent : number=1.2563444;
-  date : Date =new Date()
+  totalstudent = new Promise((resolve,reject)=>{
+setTimeout(() => {
+  resolve(this.array.length);
+}, 2000);
+  });
+ 
 
   constructor() { }
 

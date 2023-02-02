@@ -42,6 +42,7 @@ export class HttpclientComponent implements OnInit {
   publishDate: string = 'PublishDate';
   submmited: boolean = false;
   deleteId!:number;
+  pipe:string='Pipe Display'
  
 
  

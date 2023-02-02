@@ -1,55 +1,87 @@
-<div class="table-responsive col-6" style="width: 40%">
-  <input
-    type="text"
-    placeholder="Serch Gender..."
-    width="450px;"
-    class="form-control"
-    [(ngModel)]="search"
-  />
-  <table class="table">
-    <thead class="thead-light">
-      <tr>
-        <th scope="col">{{ title }}</th>
-        <th scope="col">{{ email }}</th>
-        <th scope="col">{{ name }}</th>
-        <th scope="col">{{ tdate }}</th>
-        <th scope="col">{{ gender }}</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let user of array | filterpipe : search">
-        <td>{{ user.title }}</td>
-        <td class="shrink">{{ user.email }}</td>
-        <th class="shrink">{{ user.name  }}</th>
-        <td class="shrink">{{ user.tdate }}</td>
-        <td class="shrink">{{ user.gender }}</td>
-      </tr>
-    </tbody>
-  </table>
+<div class="table-responsive row" class="d-flex justify-content-center m-3 ">
+    <div class="col-6">
+        <h3>
+            Totalstudentes:{{totalstudent|async}}
+        </h3>
+        <input type="text" placeholder="Serch Name..." width="450px;" class="form-control" [(ngModel)]="search" />
+        <table class="table" *ngIf="(array|filterpipe:search).length>0">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">{{ title }}</th>
+                    <th scope="col">{{ email }}</th>
+                    <th scope="col">{{ name }}</th>
+                    <th scope="col">{{ date }}</th>
+                    <th scope="col">{{ gender }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of array | filterpipe : search">
+                    <td>{{ user.title }}</td>
+                    <td class="shrink">{{ user.email }}</td>
+                    <th class="shrink">{{ user.name }}</th>
+                    <td class="shrink">{{ user.date|date|lowercase }}</td>
+                    <td class="shrink">{{ user.gender|uppercase }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
-  <div class="jumbotron text-center text-danger">
-    <h1>Pipe In Angular</h1>
-  </div>
-  <p>
-    Upper Case :{{ upperName | uppercase }}<br />
-    Lower Case :{{ lowerName | lowercase }}<br />
-    Title Case :{{ titleName | titlecase }}<br />
-    Date: {{ dateToday }}<br />
-    Date Pipe: {{ dateToday | date | uppercase }}<br />
-    Date Pipe: {{ dateToday | date : "short" | lowercase }}<br />
-    Name: {{ name | uppercase }} <br />
-    Name: {{ name | slice : 6 | uppercase }}<br />
-    Currency FormatesUSD : {{ num1 | currency }} (Default)<br />
-    Currency FormatesIndia : {{ num1 | currency : "INR" }}<br />
-    Currency FormatesEuro : {{ num1 | currency : "EUR" }}<br />
-    Decimal Formates : {{ pi | number }}<br />
-    Decimal Formates :{{ pi | number : "3.2-9" }}<br />
-    Decimal Formates :{{ pi | number : "1.3" }}<br />
-    Decimal Formates :{{ pi | number : "1.3-6" }}<br />
-    Decimal Formates :{{ num2 | number : "" : "en" }}<br />
-    Percent Formates:{{ percent | percent }}<br />
-    Percent Formates:{{ percent | percent : "4.3-5" }}<br />
-    Percent Formates:{{ percent | percent : "2.2-5" }}<br />
-    Percent Formates:{{ percent | percent : "1.2-5" }}<br />
-  </p>
+
+    <div class="col-6 px-2">
+        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active " id="pills-TextFormates-tab" data-bs-toggle="pill"
+                    data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
+                    aria-selected="true">TextFormates</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pills-Date-tab" data-bs-toggle="pill" data-bs-target="#pills-profile"
+                    type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Date</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pills-currency-tab" data-bs-toggle="pill" data-bs-target="#pills-contact"
+                    type="button" role="tab" aria-controls="pills-contact" aria-selected="false">currency</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pills-decimal-tab" data-bs-toggle="pill" data-bs-target="#pills-decimal"
+                    type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Decimal</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pills-percent-tab" data-bs-toggle="pill" data-bs-target="#pills-percent"
+                    type="button" role="tab" aria-controls="pills-contact" aria-selected="false">percent</button>
+            </li>
+        </ul>
+        <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade show active btn btn-outline-success mt-4" id="pills-home" role="tabpanel"
+                aria-labelledby="pills-TextFormates-tab">
+                Upper Case :{{ upperName | uppercase }}<br />
+                Lower Case :{{ lowerName | lowercase }}<br />
+                Title Case :{{ titleName | titlecase }}<br />
+            </div>
+            <div class="tab-pane fade btn btn-outline-success mt-4" id="pills-profile" role="tabpanel" aria-labelledby="pills-Date-tab">
+                Date: {{ dateToday }}<br />
+                Date Pipe: {{ dateToday | date | uppercase }}<br />
+                Date Pipe: {{ dateToday | date : "short" | lowercase }}<br />
+                Date Pipe:{{dateToday|date:'dd/mm/yyyy'}}<br>
+                Name: {{ name | uppercase }} <br />
+                Name: {{ name | slice : 6 | uppercase }}<br /></div>
+            <div class="tab-pane fade btn btn-outline-success mt-4" id="pills-contact" role="tabpanel" aria-labelledby="pills-currency-tab">
+                Currency FormatesUSD : {{ num1 | currency }} (Default)<br />
+                Currency FormatesIndia : {{ num1 | currency : "INR" }}<br />
+                Currency FormatesEuro : {{ num1 | currency : "EUR" }}<br /></div>
+        
+        <div class="tab-pane fade btn btn-outline-success mt-4" id="pills-decimal" role="tabpanel" aria-labelledby="pills-decimal-tab">
+            Decimal Formates : {{ pi | number }}<br />
+            Decimal Formates :{{ pi | number : "3.2-9" }}<br />
+            Decimal Formates :{{ pi | number : "1.3" }}<br />
+            Decimal Formates :{{ pi | number : "1.3-6" }}<br />
+            Decimal Formates :{{ num2 | number : "" : "en" }}<br /></div>
+
+        <div class="tab-pane fade btn btn-outline-success mt-4" id="pills-percent" role="tabpanel" aria-labelledby="pills-percent-tab">
+            Percent Formates:{{ percent | percent }}<br />
+            Percent Formates:{{ percent | percent : "4.3-5" }}<br />
+            Percent Formates:{{ percent | percent : "2.2-5" }}<br />
+            Percent Formates:{{ percent | percent : "1.2-5" }}<br /></div>
+        </div>
+    </div>
 </div>
