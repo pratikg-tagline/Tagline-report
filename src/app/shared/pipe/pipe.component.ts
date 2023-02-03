@@ -71,6 +71,15 @@ setTimeout(() => {
   resolve(this.array.length);
 }, 2000);
   });
+  names: string[] = [
+    'my name is pratik ghoghari',
+   ' They speak English at work.',
+    'I have no money at the moment.',
+    'The train does not leave at 12 AM.',
+  '  Does she drink coffee?',
+    'I made a doll for Ann.',
+
+  ];
  
 
   constructor() { }

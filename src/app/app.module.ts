@@ -17,6 +17,7 @@ import { AccesstokenInterceptor } from './shared/interceptor/accesstoken.interce
 import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
 import { PipeComponent } from './shared/pipe/pipe.component';
 import { FilterpipePipe } from './shared/filterpipe/filterpipe.pipe';
+import { EllipsisPipe } from './shared/filterpipe/ellipsis.pipe';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { FilterpipePipe } from './shared/filterpipe/filterpipe.pipe';
     TaglinenavbarComponent,
     HttpclientComponent,
     PipeComponent,
-    FilterpipePipe
+    FilterpipePipe,
+    EllipsisPipe
   ],
   imports: [
     BrowserModule,

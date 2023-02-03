@@ -1,9 +1,17 @@
 <div class="table-responsive row" class="d-flex justify-content-center m-3 ">
     <div class="col-6">
-        <h3>
-            Totalstudentes:{{totalstudent|async}}
-        </h3>
-        <input type="text" placeholder="Serch Name..." width="450px;" class="form-control" [(ngModel)]="search" />
+        <div class="row">
+            <div class="col-4">
+                <h3>ellipsis</h3>
+                <ul>
+                  <li *ngFor="let name of names">{{ name | ellipsis:15 }}</li>
+                </ul>
+          </div>
+           <div class="col-8">
+              <h3>
+                  Totalstudentes:{{totalstudent|async}}
+              </h3>
+              <input type="text" placeholder="Serch Name..." width="450px;" class="form-control" [(ngModel)]="search" />
         <table class="table" *ngIf="(array|filterpipe:search).length>0">
             <thead class="thead-light">
                 <tr>
@@ -15,7 +23,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let user of array | filterpipe : search">
+                <tr *ngFor="let user of array | filterpipe : search" >
                     <td>{{ user.title }}</td>
                     <td class="shrink">{{ user.email }}</td>
                     <th class="shrink">{{ user.name }}</th>
@@ -24,6 +32,11 @@
                 </tr>
             </tbody>
         </table>
+           </div>
+        </div>
+        
+       
+        
     </div>
 
 
