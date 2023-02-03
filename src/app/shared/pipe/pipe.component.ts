@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -56,6 +57,13 @@ export class PipeComponent implements OnInit {
       date:new Date(),
       gender:'male'
     },
+    {
+      title:'name',
+      name:'priya',
+      email:'Priya@gmail.com',
+      date:new Date(),
+      gender:'female'
+    },
   ];
   dateToday!: string;
   name!: string;
@@ -66,6 +74,9 @@ export class PipeComponent implements OnInit {
   pi: number = 3.14159265359;
   num2:number = 1000000;
   percent : number=1.2563444;
+  // totalstudent: any = new Observable((obj) => {
+  //   obj.next(this.array.length);
+  // });
   totalstudent = new Promise((resolve,reject)=>{
 setTimeout(() => {
   resolve(this.array.length);
@@ -77,10 +88,10 @@ setTimeout(() => {
     'I have no money at the moment.',
     'The train does not leave at 12 AM.',
   '  Does she drink coffee?',
-    'I made a doll for Ann.',
+    'I made a doll',
 
   ];
- 
+ country:any=['India','Pakistan','Bangladesh','USA']
 
   constructor() { }
 
@@ -92,5 +103,8 @@ setTimeout(() => {
 
     getFormDate(date:any){
          return date;
+    }
+    add(value:any){
+this.country.push(value);
     }
 }

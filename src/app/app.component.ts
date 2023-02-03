@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import * as AOS from 'aos';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,4 +8,8 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'Tagline-report';
 
+  ngOnInit(): void {
+   
+   AOS.init()
+    }
 }

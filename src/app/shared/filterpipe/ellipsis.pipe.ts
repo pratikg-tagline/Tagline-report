@@ -1,15 +1,13 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'ellipsis'
+  name: 'ellipsis',
 })
 export class EllipsisPipe implements PipeTransform {
-
-  transform(value: string, limit:number): unknown {
-    if(limit && value.length > limit) {
+  transform(value: string, limit: number): unknown {
+    if (limit && value.length > limit) {
       return value.substring(0, limit).concat('...');
     }
     return value;
   }
-
 }

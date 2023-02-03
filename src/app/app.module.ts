@@ -18,6 +18,7 @@ import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
 import { PipeComponent } from './shared/pipe/pipe.component';
 import { FilterpipePipe } from './shared/filterpipe/filterpipe.pipe';
 import { EllipsisPipe } from './shared/filterpipe/ellipsis.pipe';
+import { PurePipe } from './shared/filterpipe/pure.pipe';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { EllipsisPipe } from './shared/filterpipe/ellipsis.pipe';
     HttpclientComponent,
     PipeComponent,
     FilterpipePipe,
-    EllipsisPipe
+    EllipsisPipe,
+    PurePipe
   ],
   imports: [
     BrowserModule,
