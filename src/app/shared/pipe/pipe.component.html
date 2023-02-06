@@ -1,5 +1,16 @@
 <div class="table-responsive row" class="d-flex justify-content-center m-3 ">
     <div class="col-6">
+        <div>
+            
+            <input type="text" placeholder="Serch Name..." width="450px;" class="form-control" [(ngModel)]="bold" />
+            <!-- <div *ngFor="let name of sentence" [innerHTML]="name.text | boldsearch: bold"></div> -->
+            <ul>
+                <li *ngFor="let name of sentence | boldsearch :bold" >
+                    <p [innerHTML]="name.text"></p>
+                </li>
+               
+              </ul>
+        </div>
         <div class="row">
             <div class="col-4" data-aos="flip-left"
             data-aos-easing="ease-out-cubic"
@@ -34,7 +45,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let user of array | filterpipe : search" >
+                <tr *ngFor="let user of array | filterpipe : search " >
                     <td>{{ user.title }}</td>
                     <td class="shrink">{{ user.email }}</td>
                     <th class="shrink">{{ user.name }}</th>

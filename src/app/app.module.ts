@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule, Pipe } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -20,6 +20,9 @@ import { FilterpipePipe } from './shared/filterpipe/filterpipe.pipe';
 import { EllipsisPipe } from './shared/filterpipe/ellipsis.pipe';
 import { PurePipe } from './shared/filterpipe/pure.pipe';
 
+import { pipe } from 'rxjs';
+import { BoldsearchPipe } from './shared/filterpipe/boldsearch.pipe';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +33,9 @@ import { PurePipe } from './shared/filterpipe/pure.pipe';
     PipeComponent,
     FilterpipePipe,
     EllipsisPipe,
-    PurePipe
+    PurePipe,
+    BoldsearchPipe,
+ 
   ],
   imports: [
     BrowserModule,
